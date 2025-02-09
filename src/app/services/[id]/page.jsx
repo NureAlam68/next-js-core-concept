@@ -55,17 +55,27 @@ const ServiceDetails = ({params}) => {
     const id = params.id;
     const singleData = data.find(d => d.id == id)
 
-  return (
-    <div className='px-20'>
-      <h1>Service Details</h1>
-      <p>ID: {id}</p>
-      <div className='mt-10'>
-        <img src={singleData.image} alt="" />
-        <h3 className='font-bold py-4'>{singleData.name}</h3>
-        <p>{singleData.description}</p>
-      </div>
-    </div>
-  )
+    if(singleData) {
+      return (
+        <div className='px-20'>
+          <h1>Service Details</h1>
+          <p>ID: {id}</p>
+          <div className='mt-10'>
+            <img src={singleData.image} alt="" />
+            <h3 className='font-bold py-4'>{singleData.name}</h3>
+            <p>{singleData.description}</p>
+          </div>
+        </div>
+      )
+    }
+    else {
+      return (
+        <>
+        <p className='text-red-600'>SERVICE NOT FOUND...</p>
+      </>
+      )
+    }
+ 
 }
 
 export default ServiceDetails
