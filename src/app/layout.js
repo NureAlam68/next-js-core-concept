@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         <main className="min-h-screen">
         {children}
         </main>
-        <footer className="bg-green-500 p-6">
+        <footer className="bg-green-500 p-6 mt-10">
           Awesome NextJs project
         </footer>
       </body>
