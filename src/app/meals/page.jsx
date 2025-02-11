@@ -1,4 +1,10 @@
+import Link from "next/link";
 import MealsSearch from "./components/MealsSearch";
+
+export const metadata = {
+  title: 'All meals',
+  description: "All meals here",
+};
 
 const Meals = async ({searchParams}) => {
     const query = await searchParams
@@ -26,6 +32,7 @@ const Meals = async ({searchParams}) => {
                 <img src={meal.strMealThumb} alt="" />
                 <p className='mt-5 font-bold'>{meal?.strMeal}</p>
                 <p className='mt-4'>{meal?.strCategory}</p>
+                <Link className="px-2 py-1 bg-green-600 text-white rounded-sm" href={`/meals/${meal.idMeal}`}>Details</Link>
             </div>)
         }
       </div>
