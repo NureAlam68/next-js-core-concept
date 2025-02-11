@@ -1,5 +1,11 @@
+import { Roboto } from 'next/font/google';
 import Link from 'next/link';
 import React from 'react'
+
+const roboto = Roboto({
+  weight: ["400", "700"],
+  subsets: ["latin"]
+})
 
 export const getPosts = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -19,7 +25,7 @@ const Post = async () => {
       <h1>Post</h1>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10 gap-6'>
         {
-            posts.map(post => <div key={post.id} className='border p-2 bg-green-100'>
+            posts.map(post => <div key={post.id} className={`border p-2 bg-green-100 ${roboto.className}`}>
                 <p className='font-bold mb-3'>{post.title}</p>
                 <p>{post.body}</p>
                 <Link href={`/post/${post.id}`} className='mt-4 underline text-blue-600'>Details</Link>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MealsSearch from "./components/MealsSearch";
+import Image from "next/image";
 
 export const metadata = {
   title: 'All meals',
@@ -29,9 +30,9 @@ const Meals = async ({searchParams}) => {
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 px-10 lg:px-[150px] lg:mt-20'>
         {
             meals?.map(meal => <div className='border p-4' key={meal.idMeal}>
-                <img src={meal.strMealThumb} alt="" />
+                <Image src={meal?.strMealThumb} width={641} height={641} alt="" />
                 <p className='mt-5 font-bold'>{meal?.strMeal}</p>
-                <p className='mt-4'>{meal?.strCategory}</p>
+                <p className='mt-4 mb-2'>{meal?.strCategory}</p>
                 <Link className="px-2 py-1 bg-green-600 text-white rounded-sm" href={`/meals/${meal.idMeal}`}>Details</Link>
             </div>)
         }
