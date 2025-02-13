@@ -61,7 +61,7 @@ const ServiceDetails = ({params}) => {
           <h1>Service Details</h1>
           <p>ID: {id}</p>
           <div className='mt-10'>
-            <img src={singleData.image} alt="" />
+            <img src={singleData.image} className='max-w-[500px]' alt="" />
             <h3 className='font-bold py-4'>{singleData.name}</h3>
             <p>{singleData.description}</p>
           </div>
