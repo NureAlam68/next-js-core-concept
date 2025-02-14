@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 const ProductsPage = async() => {
@@ -5,6 +6,10 @@ const ProductsPage = async() => {
         cache: 'force-cache'
     })
     const data = await res.json()
+
+    if(data.length < 20) {
+        redirect("/dashboard/products/add")
+    }
   return (
     <div className='mt-10 px-20 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5'>
       {
