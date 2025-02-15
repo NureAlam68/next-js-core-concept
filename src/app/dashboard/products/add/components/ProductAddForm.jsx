@@ -1,25 +1,28 @@
 "use client";
+import { postProduct } from "@/app/actions/products/postProduct";
 import { useRouter } from "next/navigation";
 import React from "react";
 
 const ProductAddForm = () => {
+  const {NEXT_PUBLIC_SERVER_ADDRESS} = process.env
   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.productName.value;
     const payload = { name };
-    const res = await fetch(
-      "https://core-concept-nextjs-sigma.vercel.app/api/items",
-      {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const result = await res.json();
+    // const res = await fetch(
+    //   `${NEXT_PUBLIC_SERVER_ADDRESS}/api/items`,
+    //   {
+    //     method: "POST",
+    //     body: JSON.stringify(payload),
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // );
+    // const result = await res.json();
+    const result = await postProduct(payload)
     form.reset();
     // alert('Product Added')
     router.push("/products");
