@@ -4,8 +4,8 @@ import UserInfo from "./components/UserInfo";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 
 
-export default function Home() {
-  const session = getServerSession(authOptions)
+export default async function Home() {
+  const session = await getServerSession(authOptions)
   return (
    <div>
     <h1 className="text-3xl font-bold">Home</h1>
